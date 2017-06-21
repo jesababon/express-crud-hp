@@ -190,4 +190,4 @@ In your `public` js file add an event listener to when the edit form is submitte
 
 ## Submission
 
-Homework is due by **11:00 Tonight**! Remember to work with each other and go to TAs when you need it, but follow the [guidelines](https://git.generalassemb.ly/wdi-nyc-5-22/course-information/blob/master/how-to-queue-with-TAs.md) for queuing. Follow the normal [rules for homework submission](https://git.generalassemb.ly/wdi-nyc-5-22/course-information/blob/master/homework-policy.md), remember to include a link to your **repo**.
+Homework is due by **11:00 Thursday**! Remember to work with each other and go to TAs when you need it, but follow the [guidelines](https://git.generalassemb.ly/wdi-nyc-5-22/course-information/blob/master/how-to-queue-with-TAs.md) for queuing. Follow the normal [rules for homework submission](https://git.generalassemb.ly/wdi-nyc-5-22/course-information/blob/master/homework-policy.md), remember to include a link to your **repo**.
