@@ -122,7 +122,7 @@ In the view, show the house sigil by displaying the house and img in a div with 
 
 Below the house div, create a new div and give it the CSS class "roster". Inside this div, iterate over your students collection, which creates a div with the CSS class "student", that contains an h1 with the student's name, and an img tag that displays the student's photo.
 
-###Part 5 - Updating the Students list
+### Part 5 - Updating the Students list
 
 Update your `/students` page so that each students name has next to it another link to their affiliated house. ***HINT*** Look at the routes to access each house. Do they match up with the student's house_id?
 
