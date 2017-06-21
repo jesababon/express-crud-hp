@@ -52,7 +52,7 @@ By the end of Wednesday, you will be in a good position if you complete up to (a
 4. It may be helpful to create a test database so you can practice editing and deleting data from tables, then setting the same seed data as your 'live' database.
 
     1. `createdb hogwarts_crud_test`
-    1. `psql -d hogwarts_crud_test -f seed.sql`
+    2. `psql -d hogwarts_crud_test -f seed.sql`
 
  **Now you can test commands and mess with tables to your haerts content in your own little sandbox. Think of it as your own little [room of requirement.](http://harrypotter.wikia.com/wiki/Room_of_Requirement)**
 
@@ -97,9 +97,11 @@ Your `views` folder that will hold all of your html templates. Inside of `views`
 
 ### Part 1 - Accio Students! - Reading
 
-You will need to build route for `/`in your `index.js` file. Write the handler to connect the route to the view, and supply it with the relevant data. Your `views/home/index.html` file should have a link to the `/students` and the `/houses` route.
+You will need to build route for `/`in your `index.js` file. It should render your `views/home/index.html` file and should have links to the `/students` and the `/houses` routes.
 
-Next you will need to build out the controller `/students`. In this controller set up a route that renders the `students/index.html` view with the appropriate data. The data here is a list of all students from Hogwarts. You will have to query the database using a PG connection to get all student info, and supply it to the view. In the view, iterate over all of the student names and create a link to their specific profile on the page. i.e
+Next you will need to build out the controller `/students`. In this controller set up a route that renders the `students/index.html` view with the appropriate data. The data here is a list of all students from Hogwarts. You will have to create a function in your model to query the database using a PG connection to get all student info, and supply it to the view.
+
+In the view, iterate over all of the student names and create a link to their specific profile on the page. i.e
 
 `<a href="/students/{{ id }}">{{ fname }} {{ lname }}</a>`
 > The `id` and the `fname`/`lname` should dynamically be generated in the mustache template from each student's hash
@@ -108,19 +110,29 @@ Next you will need to build out the controller `/students`. In this controller s
 
 ### Part 2 - Accio *Individual* Students! - Reading
 
-Write out the route handler for `/students/:id` to the html template in `view/students/show.html`. In this html file, create a div with the class "student" that contains an h1 tag and an img tag. In the h1 tag, put the student's full name. In the img tag, put the student's `image` value from the database.
+In your `students` controller, write out the route handler for `/students/:id` to the html template `view/students/show.html`. It should ask the model for the individual student based off of the `id` parameter given.
+
+The `student` model should have a function that will return the promise for the individual student
+
+In the view create a div with the class "student" that contains an h1 tag and an img tag. In the h1 tag, put the student's full name. In the img tag, put the student's `image` value from the database.
 
 ### Part 3 - Accio Houses! - Reading
 
-Students of Hogwarts are split into separate houses. Create the route handler and controller for `/houses`. The controller should have a route that renders from the `views/houses/index.html` file. You must query the database for all houses, and iterate over them in the view. Each iteration will create a div on the page with class "house", that contains an h2, and an img tag. The h2 tag should be dynamically populated to create a link to the house by its id, i.e: `<a href="/houses/{{ id }}">{{ name }}r</a>`. The img tag should contain the img url obtained from the database.
+Students of Hogwarts are split into separate houses. Create the route handler and controller for `/houses`.
+
+The controller should have a route that renders from the `views/houses/index.html` file. It will ask the model to query the database for all houses then send that data with the view render.
+
+The model will have a function to return a promise that will retrieve all of the houses.
+
+In the view iterate over the houses. Each iteration will create a div on the page with class "house", that contains an h2, and an img tag. The h2 tag should be dynamically populated to create a link to the house by its id, i.e: `<a href="/houses/{{ id }}">{{ name }}r</a>`. The img tag should contain the img url obtained from the database.
 
 ### Part 4 - Accio All Students from a House - More Reading
 
-You've shown the houses together, but the house heads need a list of all of the students they are in charge of. Build a dynamic route in your `houses` controller for `/houses/:id` that will query the database for a `JOIN` Table using the house based on the id, all students whose `house_id` value matches `:id` supplied by the route call.
+You've shown the houses together, but the house heads need a list of all of the students they are in charge of. Build a dynamic route in your `houses` controller for `/houses/:id` that will ask the model to query the database for all the students in the given house based on the house id. It will then render the `views/houses/show.html` view with the data.
 
-In the view, show the house sigil by displaying the house and img in a div with the class "house".
+In the model create a function that will return a promise to get all students whose `house_id` value matches `:id` supplied by the route call.
 
-Below the house div, create a new div and give it the CSS class "roster". Inside this div, iterate over your students collection, which creates a div with the CSS class "student", that contains an h1 with the student's name, and an img tag that displays the student's photo.
+In the view, show the house sigil by displaying the house and img in a div with the class "house". Below the house div, create a new div and give it the CSS class "roster". Inside this div, iterate over your students collection, which creates a div with the CSS class "student", that contains an h1 with the student's name, and an img tag that displays the student's photo.
 
 ### Part 5 - Updating the Students list
 
@@ -135,15 +147,17 @@ There are topics in the next parts that will be covered Thursday. Feel free to t
 
 `HINT` - You may need the `body-parser` package.
 
-Create a new view in the `views/students` directory called `new.html`. In this view create a new form tag that sends a POST request to '/students'. This form must ask for a first name, last name, image url, and a dropdown list of available houses. You'll have to query the database for each house.
+Create a new view in the `views/students` directory called `new.html`. In this view create a form tag that sends a POST request to `/students`. This form must ask for a first name, last name, image url, and a dropdown list of available houses. You'll have to query the database for each house.
 
-In your `students` controller create a new `get` route to `/new` that renders the view you just created, along with a list of all the houses. HINT: you may need to access your `houses` model!
+In your `students` controller create a new `get` route to `/new` that renders the view you just created, along with a list of all the houses. **HINT**: you may need to access your `houses` model!
 
-Drop downs are done with the `<select>` tag, and can be populated with `<option>` tags. You will iterate over the houses from your query and iterate inside the select tag to create them. An example option tag output for this form is shown below:
+Drop downs are done with the `<select>` tag, and can be populated with `<option>` tags. You will iterate over the houses from your query inside the select tag to create them. An example option tag output for this form is shown below:
 
 `<option value="{{ id }}">{{ name }}</option>`
 
-Create a new `post` route in your `students` controller. When a post request is sent to `/students`, it should take the values from the form and save them to the `hogwarts_crud` table. In your model, create the appropriate query that will return a promise to `insert` the data to the table. You can look at the student table's schema in `seeds.sql` to see what values are required. How would you set form inputs as required to prevent the form from submitting?
+Create a new `post` route in your `students` controller. When a post request is sent to `/students`, it should take the values from the form and save them to the `hogwarts_crud` table.
+
+In your model, create the appropriate query that will return a promise to `insert` the data to the table. You can look at the student table's schema in `seeds.sql` to see what values are required. How would you set form inputs as required to prevent the form from submitting?
 
 Save the return value of the query you wrote and use it to redirect the user to the newly created student's id. By default you get back an empty PG::Request object, but by using the [RETURNING](http://www.postgresql.org/docs/8.3/static/sql-insert.html) keyword, you can get back the new student's id.
 
@@ -153,7 +167,7 @@ Add a link in your `home/index.html` to create a new student!
 
 In your student view, create a button to delete the student. Create a javascript file in your `public` directory and link it to your view. In that file, send a DELETE request to `/students/:id`. When the call is done, [redirect](https://developer.mozilla.org/en-US/docs/Web/API/Window/location) the viewer to the `/students` page.
 
-In your `students` controller. Create a `delete` route that when a request is made to `/students/:id` it will call on your model to delete the student, and `send` a confirmation that the student was deleted.
+In your `students` controller. Create a `delete` route that when a request is made to `/students/:id` it will call on your model to delete the student, then `send` a confirmation that the student was deleted.
 
 In your `students` model. Create a `delete` function that will return a promise to delete the student from the table.
 
@@ -173,3 +187,7 @@ In your `public` js file add an event listener to when the edit form is submitte
 
 - **Styling** As usual! Make it look pretty.
 - Add a sorting hat method so that when a new student is created they are randomly assigned to one of Hogwarts' four houses. (Where do you think this logic should go? Use your judgement).
+
+## Submission
+
+Homework is due by **11:00 Tonight**! Remember to work with each other and go to TAs when you need it, but follow the [guidelines](https://git.generalassemb.ly/wdi-nyc-5-22/course-information/blob/master/how-to-queue-with-TAs.md) for queuing. Follow the normal [rules for homework submission](https://git.generalassemb.ly/wdi-nyc-5-22/course-information/blob/master/homework-policy.md), remember to include a link to your **repo**.
