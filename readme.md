@@ -57,7 +57,7 @@ By the end of Wednesday, you will be in a good position if you complete up to (a
  **Now you can test commands and mess with tables to your haerts content in your own little sandbox. Think of it as your own little [room of requirement.](http://harrypotter.wikia.com/wiki/Room_of_Requirement)**
 
 
-### Set up your file structure
+### Part 2 - Set up your file structure
 
 Use `mkdir` and `touch` to create your file structure.
 
