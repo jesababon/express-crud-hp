@@ -15,7 +15,7 @@ As a member of Dumbledore's Army it's up to YOU to set up some ingenious Muggle 
 - Practicing integrating SQL into Express apps using the PG-Promise package
 - Practicing displaying templated data in RESTful routes
 - Learning to implement CRUD apps in Express
-- Learning to use Ajax to implement patch and delete HTTP actions
+- Learning to use Ajax to implement put and delete HTTP actions
 
 ---
 
