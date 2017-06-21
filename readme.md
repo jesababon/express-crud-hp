@@ -47,7 +47,7 @@ By the end of Wednesday, you will be in a good position if you complete up to (a
      - image
      - house_id (this should be set up as a foreign key!!!)
 
-3. Then seed the database by running: `psql -d hogwarts_crud -f seeds.sql`
+3. Then seed the database by running: `psql -d hogwarts_crud -f db/seeds.sql`
 
 4. It may be helpful to create a test database so you can practice editing and deleting data from tables, then setting the same seed data as your 'live' database.
 
