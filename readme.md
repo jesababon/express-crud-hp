@@ -1,6 +1,6 @@
 # OH NO!
 
-![:image](https://media.giphy.com/media/tpwwhv1BLd31e/giphy.gif)
+![:image](https://media.giphy.com/media/mDh73MB4yiUEw/giphy.gif)
 
 It just so happens that all of the wizards of consequence in the magic world have been students of the Hogwarts School of Witchcraft and Wizardry, however the school has lost all its magic and now NOTHING WORKS!
 
