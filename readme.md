@@ -54,7 +54,7 @@ By the end of Wednesday, you will be in a good position if you complete up to (a
     1. `createdb hogwarts_crud_test`
     2. `psql -d hogwarts_crud_test -f seed.sql`
 
- **Now you can test commands and mess with tables to your haerts content in your own little sandbox. Think of it as your own little [room of requirement.](http://harrypotter.wikia.com/wiki/Room_of_Requirement)**
+ **Now you can test commands and mess with tables to your hearts content in your own little sandbox. Think of it as your own little [room of requirement.](http://harrypotter.wikia.com/wiki/Room_of_Requirement)**
 
 
 ### Part 2 - Set up your file structure
