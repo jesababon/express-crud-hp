@@ -189,7 +189,6 @@ Remember to include a link to your **repo**.
 
 https://docs.google.com/forms/d/13hbOOxPfeeJzyg-Jc_Cx2VWnTvTH7xB8tLKV0MLU6KI/edit
 
-
 **WDI-Rover-Spirit** 🔵
 
 https://goo.gl/forms/OajGUqQ4nrljHPxP2
