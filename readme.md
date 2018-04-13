@@ -183,3 +183,11 @@ Homework is due by **11:00 Sunday April 15th**! Remember to work with each other
 Completion, comfort, wins, losses, questions... you know the drill.
 
 Remember to include a link to your **repo**.
+
+### Exit Tickets
+**WDI-Rover-Opportunity**🔴
+
+
+**WDI-Rover-Spirit** 🔵
+
+https://goo.gl/forms/OajGUqQ4nrljHPxP2
