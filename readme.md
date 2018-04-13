@@ -147,6 +147,15 @@ Save the return value of the query you wrote and use it to redirect the user to 
 
 Add a link in your `home/index.ejs` to create a new student!
 
+
+## BONUS
+
+- **Styling** As usual! Make it look pretty.
+
+- Add a sorting hat method so that when a new student is created they are randomly assigned to one of Hogwarts' four houses. (Where do you think this logic should go? Use your judgement).
+
+**HINT:** Check out the [npm method-override](https://www.npmjs.com/package/method-override) for the bonus section!
+
 ### Part 7 - Avada Kedavra - Destroy
 
 In your student view, create a button to delete the student. Create a javascript file in your `public` directory and link it to your view. In that file, send a DELETE request to `/students/:id`. When the call is done, [redirect](https://developer.mozilla.org/en-US/docs/Web/API/Window/location) the viewer to the `/students` page.
@@ -154,6 +163,7 @@ In your student view, create a button to delete the student. Create a javascript
 In your `students` controller. Create a `delete` route that when a request is made to `/students/:id` it will call on your model to delete the student, then `send` a confirmation that the student was deleted.
 
 In your `students` model. Create a `delete` function that will return a promise to delete the student from the table.
+
 
 ### Part 8 - Riddikulus - Update
 
@@ -166,12 +176,6 @@ Then set up a `put` route to `/students/:id`. When a request is made to this rou
 In the `students` model. Create a function that will return a promise to update the student information.
 
 In your `public` js file add an event listener to when the edit form is submitted. It should then get the values from each of the inputs and send a `PUT` request to `/students/:id` to edit the student's data. When the Ajax call is done, redirect the viewer to the student's show page.
-
-## BONUS
-
-- **Styling** As usual! Make it look pretty.
-- Add a sorting hat method so that when a new student is created they are randomly assigned to one of Hogwarts' four houses. (Where do you think this logic should go? Use your judgement).
-
 ## 🚀 Homework Submission:
 
 Homework is due by **11:00 Sunday April 15th**! Remember to work with each other and go to TAs when you need it. 
