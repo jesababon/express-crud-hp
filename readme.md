@@ -66,29 +66,22 @@ Your `views` folder that will hold all of your html templates. Inside of `views`
  - houses/
  - students/
 
- You will also want the `students` and `houses` folders to both have their own `index.html` and `show.html` files. The `index.html` will display all of the data while the `show.html` file will show individual results.
+ You will also want the `students` and `houses` folders to both have their own `index.ejs` and `show.ejs` files. The `index.ejs` will display all of the data while the `show.ejs` file will show individual results.
 
- Inside of the `home` directory, add an `index.html` file. This will be the file you use for `/` route responses in your app. For example if we were to restructure angry birds in this format it would look something like:
- ```
- ├── home
- │   └── index.html
- └── angry birds
-     ├── index.html
-     └── show.html
- ```
- Where the `index` page shows all the birds, and the `show` page displays an individual bird .
+ Inside of the `home` directory, add an `index.ejs` file. This will be the file you use for `/` route responses in your app. 
+ Where the `index` page shows all the students, and the `show` page displays an individual student .
 
  Your tree inside of the `views` folder should look like this:
 
 ```
 ├── home
-│   └── index.html
+│   └── index.ejs
 ├── houses
-│   ├── index.html
-│   └── show.html
+│   ├── index.ejs
+│   └── show.ejs
 └── students
-    ├── index.html
-    └── show.html
+    ├── index.ejs
+    └── show.ejs
 ```
 
 ---
@@ -97,20 +90,18 @@ Your `views` folder that will hold all of your html templates. Inside of `views`
 
 ### Part 1 - Accio Students! - Reading
 
-You will need to build route for `/`in your `index.js` file. It should render your `views/home/index.html` file and should have links to the `/students` and the `/houses` routes.
+You will need to build route for `/`in your `index.js` file. It should render your `views/home/index.ejs` file and should have links to the `/students` and the `/houses` routes.
 
-Next you will need to build out the controller `/students`. In this controller set up a route that renders the `students/index.html` view with the appropriate data. The data here is a list of all students from Hogwarts. You will have to create a function in your model to query the database using a PG connection to get all student info, and supply it to the view.
+Next you will need to build out the controller `/students`. In this controller set up a route that renders the `students/index.ejs` view with the appropriate data. The data here is a list of all students from Hogwarts. You will have to create a function in your model to query the database using a PG connection to get all student info, and supply it to the view.
 
-In the view, iterate over all of the student names and create a link to their specific profile on the page. i.e
-
-`<a href="/students/{{ id }}">{{ fname }} {{ lname }}</a>`
-> The `id` and the `fname`/`lname` should dynamically be generated in the mustache template from each student's hash
+In the view, iterate over all of the student names and create a link to their specific profile on the page. 
+> The `id` and the `fname`/`lname` should dynamically be generated in ejs from each student's hash
 
 **Testing Queries** If you're unsure about which queries to use, this is a good time to go into the test database and figure out what commands you can use.
 
 ### Part 2 - Accio *Individual* Students! - Reading
 
-In your `students` controller, write out the route handler for `/students/:id` to the html template `view/students/show.html`. It should ask the model for the individual student based off of the `id` parameter given.
+In your `students` controller, write out the route handler for `/students/:id` to the html template `view/students/show.ejs`. It should ask the model for the individual student based off of the `id` parameter given.
 
 The `student` model should have a function that will return the promise for the individual student
 
@@ -120,15 +111,15 @@ In the view create a div with the class "student" that contains an h1 tag and an
 
 Students of Hogwarts are split into separate houses. Create the route handler and controller for `/houses`.
 
-The controller should have a route that renders from the `views/houses/index.html` file. It will ask the model to query the database for all houses then send that data with the view render.
+The controller should have a route that renders from the `views/houses/index.ejs` file. It will ask the model to query the database for all houses then send that data with the view render.
 
 The model will have a function to return a promise that will retrieve all of the houses.
 
-In the view iterate over the houses. Each iteration will create a div on the page with class "house", that contains an h2, and an img tag. The h2 tag should be dynamically populated to create a link to the house by its id, i.e: `<a href="/houses/{{ id }}">{{ name }}r</a>`. The img tag should contain the img url obtained from the database.
+In the view iterate over the houses. Each iteration will create a div on the page with class "house", that contains an h2, and an img tag. The h2 tag should be dynamically populated to create a link to the house by its id. The img tag should contain the img url obtained from the database.
 
 ### Part 4 - Accio All Students from a House - More Reading
 
-You've shown the houses together, but the house heads need a list of all of the students they are in charge of. Build a dynamic route in your `houses` controller for `/houses/:id` that will ask the model to query the database for all the students in the given house based on the house id. It will then render the `views/houses/show.html` view with the data.
+You've shown the houses together, but the house heads need a list of all of the students they are in charge of. Build a dynamic route in your `houses` controller for `/houses/:id` that will ask the model to query the database for all the students in the given house based on the house id. It will then render the `views/houses/show.ejs` view with the data.
 
 In the model create a function that will return a promise to get all students whose `house_id` value matches `:id` supplied by the route call.
 
@@ -138,22 +129,15 @@ In the view, show the house sigil by displaying the house and img in a div with 
 
 Update your `/students` page so that each students name has next to it another link to their affiliated house. ***HINT*** Look at the routes to access each house. Do they match up with the student's house_id?
 
-
-# THIS IS A GOOD PLACE TO BE AT THE END OF WEDNESDAY
-
-There are topics in the next parts that will be covered Thursday. Feel free to try some of them out early if you wish!
-
 ### Part 6 - Expecto Patronum - Creation
 
 `HINT` - You may need the `body-parser` package.
 
-Create a new view in the `views/students` directory called `new.html`. In this view create a form tag that sends a POST request to `/students`. This form must ask for a first name, last name, image url, and a dropdown list of available houses. You'll have to query the database for each house.
+Create a new view in the `views/students` directory called `new.ejs`. In this view create a form tag that sends a POST request to `/students`. This form must ask for a first name, last name, image url, and a dropdown list of available houses. You'll have to query the database for each house.
 
 In your `students` controller create a new `get` route to `/new` that renders the view you just created, along with a list of all the houses. **HINT**: you may need to access your `houses` model!
 
-Drop downs are done with the `<select>` tag, and can be populated with `<option>` tags. You will iterate over the houses from your query inside the select tag to create them. An example option tag output for this form is shown below:
-
-`<option value="{{ id }}">{{ name }}</option>`
+Drop downs are done with the `<select>` tag, and can be populated with `<option>` tags. You will iterate over the houses from your query inside the select tag to create them. 
 
 Create a new `post` route in your `students` controller. When a post request is sent to `/students`, it should take the values from the form and save them to the `hogwarts_crud` table.
 
@@ -161,7 +145,7 @@ In your model, create the appropriate query that will return a promise to `inser
 
 Save the return value of the query you wrote and use it to redirect the user to the newly created student's id. By default you get back an empty PG::Request object, but by using the [RETURNING](http://www.postgresql.org/docs/8.3/static/sql-insert.html) keyword, you can get back the new student's id.
 
-Add a link in your `home/index.html` to create a new student!
+Add a link in your `home/index.ejs` to create a new student!
 
 ### Part 7 - Avada Kedavra - Destroy
 
@@ -173,7 +157,7 @@ In your `students` model. Create a `delete` function that will return a promise 
 
 ### Part 8 - Riddikulus - Update
 
-In each student's individual page add a link to `/students/:id/edit`, with `:id` being their id number from the database. In the `views/students` directory, create a `edit.html` view. This page should contain a form that let's us change all of the student's information except their id ( looks **awful similar** to the student creation form...).
+In each student's individual page add a link to `/students/:id/edit`, with `:id` being their id number from the database. In the `views/students` directory, create a `edit.ejs` view. This page should contain a form that let's us change all of the student's information except their id ( looks **awful similar** to the student creation form...).
 
 In the `students` controller. Set up a `get` route to `/students/:id/edit` that will render the student's edit page. Query the database for the student's info, and use it to set the default values of this form.
 
@@ -188,6 +172,10 @@ In your `public` js file add an event listener to when the edit form is submitte
 - **Styling** As usual! Make it look pretty.
 - Add a sorting hat method so that when a new student is created they are randomly assigned to one of Hogwarts' four houses. (Where do you think this logic should go? Use your judgement).
 
-## Submission
+## 🚀 Homework Submission:
 
-Homework is due by **11:00 Thursday**! Remember to work with each other and go to TAs when you need it, but follow the [guidelines](https://git.generalassemb.ly/wdi-nyc-5-22/course-information/blob/master/how-to-queue-with-TAs.md) for queuing. Follow the normal [rules for homework submission](https://git.generalassemb.ly/wdi-nyc-5-22/course-information/blob/master/homework-policy.md), remember to include a link to your **repo**.
+Homework is due by **11:00 Sunday April 15th**! Remember to work with each other and go to TAs when you need it. 
+
+Completion, comfort, wins, losses, questions... you know the drill.
+
+Remember to include a link to your **repo**.
