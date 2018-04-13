@@ -178,7 +178,7 @@ In the `students` model. Create a function that will return a promise to update 
 In your `public` js file add an event listener to when the edit form is submitted. It should then get the values from each of the inputs and send a `PUT` request to `/students/:id` to edit the student's data. When the Ajax call is done, redirect the viewer to the student's show page.
 ## 🚀 Homework Submission:
 
-Homework is due by **11:00 Sunday April 15th**! Remember to work with each other and go to TAs when you need it. 
+Homework is due by **11:00PM Sunday April 15th**! Remember to work with each other and go to TAs when you need it. 
 
 Completion, comfort, wins, losses, questions... you know the drill.
 
