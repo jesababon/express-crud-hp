@@ -1,9 +1,9 @@
--- remove any records and start the id sequence back to 1
-DROP TABLE IF EXISTS houses CASCADE;
-DROP TABLE IF EXISTS students CASCADE;
+-- connect to databae
+\c hogwarts_crud
 
--- add create tables here
-
+-- remove existing data before inserting new data
+DELETE FROM students;
+DELETE FROM houses;
 
 -- create houses
 INSERT INTO houses
