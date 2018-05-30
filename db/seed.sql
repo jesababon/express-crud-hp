@@ -7,7 +7,7 @@ DELETE FROM houses;
 
 -- create houses
 INSERT INTO houses
-  (name, img_url)
+  (name, house_img_url)
 VALUES
   ('Gryffindor', 'http://images1.wikia.nocookie.net/__cb20120922143611/harrypotter/images/7/70/G_final.jpg'),
   ('Hufflepuff', 'http://images3.wikia.nocookie.net/__cb20111027164827/harrypotter/images/3/3f/H_final.jpg'),
@@ -16,7 +16,7 @@ VALUES
 
 -- create students
 INSERT INTO students
- (fname, lname, image, house_id)
+ (fname, lname, student_img_url, house_id)
 VALUES
 ( 'Euan', 'Abercrombie', 'https://pbs.twimg.com/profile_images/661929693403324416/0Dq3fXno_400x400.jpg', 1 ),
 ( 'Katie', 'Bell', 'http://img1.wikia.nocookie.net/__cb20110801071824/harrypotter/images/5/52/Katiebellinfobox.jpg', 1 ),
