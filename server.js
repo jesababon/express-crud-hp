@@ -17,13 +17,26 @@ app.set('view engine', 'ejs');
 app.use('/client', express.static("client"));
 
 
-//Rendering Houses
+// Rendering Houses
 app.get('/hogwarts', (request, response) => {
+  response.render('hogwarts/index');
+});
+
+// Rendering Houses
+app.get('/houses', (request, response) => {
     Houses.all()
-    .then(house => {                
-        response.render('hogwarts/index', {house: house});
+    .then(houses => {                
+        response.render("houses/index.ejs", {houses: houses});
     }); 
 });
+
+//Rendering Students
+app.get('/students', (request, response) => {
+  Students.all().then(students => {
+      response.render("students/index.ejs", {students:students});
+    });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Express server started on port ${PORT}`);

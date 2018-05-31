@@ -1,0 +1,16 @@
+<% include ../partials/header.ejs %>
+
+
+<h3>THE HOUSES</h3>
+<div class="housesHome">
+    <% houses.forEach( house => { %>
+        <%= house.name %>
+            <br>
+        <img style='max-height: 50px' src="<%=house.house_img_url%>">
+            <br>
+    <%    }); %>
+</div>
+<br>
+
+
+    <% include ../partials/footer.ejs %>

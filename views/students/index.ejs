@@ -1,0 +1,15 @@
+<% include ../partials/header.ejs %>
+
+
+<h3>OUR STUDENTS</h3>
+<div class="studentsHome">
+    <% students.forEach( student => { %>
+        <%= student.fname%>
+            <br>
+    <img style='width: 100px; height: 100px' src="<%=student.student_img_url%>">
+            <br>
+        <%= student.house_id %>
+            <br>
+    <%    }); %>
+</div>
+<% include ../partials/footer.ejs %>
